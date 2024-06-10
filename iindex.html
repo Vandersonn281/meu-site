@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="stylle.css">
+    <title>ludiflexx | login & registration</title>
+    <style>
+        .submenu { display: none; }
+        .submenu-container { margin-top: 20px; }
+        .input-box { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>logo . <p>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#" class="link activate">home</a></li>
+                    <li><a href="#" class="link activate" onclick="toggleSubmenu('dds-submenu')">DDS</a></li>
+                    <li><a href="#" class="link activate">services</a></li>
+                    <li><a href="#" class="link activate">Locações</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginbtn">sign in</button>
+                <button class="btn" id="signupbtn">sign up</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu"></i>
+            </div>
+        </nav>
+        <script src="1.js"></script>
+        <div class="submenu-container">
+            <div id="dds-submenu" class="submenu">
+                <form id="ddsForm">
+                    <div class="input-box">
+                        <label for="projeto">Projeto:</label>
+                        <select id="projeto" required>
+                            <option value="201">201</option>
+                            <option value="202">202</option>
+                            <option value="206">206</option>
+                            <option value="400">400</option>
+                        </select>
+                        <div class="input-box">
+                            <label for="filtroNome">Filtrar por Nome:</label>
+                            <input type="text" id="filtroNome" oninput="mostrarFormulario()">
+                        </div>
+                        <div id="formularioNomes" style="display: none;">
+                            <label for="nomesSelecionados">Nomes:</label>
+                            <select id="nomesSelecionados" multiple></select>
+                            <button type="button" onclick="finalizarSelecaoNomes()">Finalizar</button>
+                        </div>
+                        
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="tema" class="input-field" placeholder="Tema" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="date" id="data" class="input-field" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="time" id="horario" class="input-field" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="foto">Anexar Foto:</label>
+                        <input type="file" id="foto" accept="image/*">
+                    </div>
+                    <div class="input-box">
+                        <button type="button" id="tirarFotoBtn">Tirar Foto</button>
+                        <video id="video" width="400" height="300" style="display: none;"></video>
+                        <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
+                    </div>
+                    <div class="input-box">
+                        <button type="submit" class="btn">Cadastrar</button>
+                        <button type="button" class="btn white-btn" onclick="cancelar()">Não</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!------------------------------- Login Form ----------------------->
+        <div class="form-box">
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Don't have an account? <a href="#" onclick="showRegister()">sign up</a></span>
+                    <header>login</header>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="login-username" class="input-field" placeholder="Username">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="login-password" class="input-field" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="input-field" value="Login" onclick="validateLogin()">
+                </div>
+            </div>
+        </div>
+
+        <!------------------------------- Registration Form ----------------------->
+        <div class="register-container" id="register" style="display: none;">
+            <div class="top">
+                <span>Have an account? <a href="#" onclick="showLogin()">login</a></span>
+                <header>sign up</header>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="First Name">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Last Name">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Email">
+                <i class="bx bx-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="register-password" class="input-field" placeholder="Password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="input-field" value="Register" onclick="validatePassword()">
+            </div>
+            <div class="two col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check">Remember me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Terms & conditions</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const validUsername = 'nilvanderson'; // Defina seu nome de usuário aqui
+        const validPassword = 'nil1234'; // Defina sua senha aqui
+
+        function showLogin() {
+            document.getElementById('register').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function showRegister() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').style.display = 'block';
+        }
+
+        function validateLogin() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            if (username === validUsername && password === validPassword) {
+                alert('Login successful');
+                window.location.href = 'file:///C:/Users/apoio/Downloads/Projeto.1/2index.html'; // Redirecionar para outro site
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+
+        function validatePassword() {
+            const password = document.getElementById('register-password').value;
+
+            if (password === validPassword) {
+                alert('Password is correct. Registration successful.');
+                // Aqui você pode adicionar mais lógica, como redirecionar o usuário ou enviar os dados do formulário
+            } else {
+                alert('Invalid password. Please try again.');
+            }
+        }
+
+        // Função para cancelar o cadastro
+        function cancelar() {
+            document.getElementById('ddsForm').reset();
+        }
+
+            // Função para mostrar/ocultar submenu e esconder login
+            function toggleSubmenu(submenuId) {
+            const submenu = document.getElementById(submenuId);
+            const login = document.getElementById('login');
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                submenu.style.display = 'block';
+                login.style.display = 'none'; // Esconder login
+            } else {
+                submenu.style.display = 'none';
+                login.style.display = 'block'; // Mostrar login novamente
+            }
+        }
+
+        // Função para tirar foto
+        document.getElementById('tirarFotoBtn').addEventListener('click', function() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+
+            navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+                video.srcObject = stream;
+                video.play();
+                video.style.display = 'block';
+                canvas.style.display = 'none';
+            });
+
+            video.addEventListener('click', function() {
+                const context = canvas.getContext('2d');
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                video.pause();
+                video.style.display = 'none';
+                canvas.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

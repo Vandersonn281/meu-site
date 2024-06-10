@@ -1,0 +1,162 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    background-color: #151515; /* Cor de fundo geral */
+  }
+  
+  nav.menu-lateral {
+    width: 300px;
+    height: 100%;
+    background-color: rgb(10, 10, 10);
+    padding: 40px 0 40px 1%;
+  }
+  
+  .btn-expandir {
+    width: 100%;
+    padding-left: 10px;
+  }
+  
+  .btn-expandir > i {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  ul li.item-menu {
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  ul li.item-menu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .submenu-container {
+    display: none;
+  }
+  
+  .submenu {
+    display: none;
+    padding: 20px;
+  }
+  
+  /* Estilo específico para o submenu do Envelope */
+  #envelope-submenu {
+    background-color: #d3d3d3; /* Altere esta cor conforme necessário */
+  }
+  
+  /* Estilo específico para o submenu de Conta */
+  #account-submenu {
+    background-color: #e0e0e0; /* Altere esta cor conforme necessário */
+  }
+  
+  /* Botões de ação no submenu envelope */
+  #action-buttons {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px;
+    background-color: #333;
+  }
+  
+  #action-buttons button {
+    padding: 5px 20px ;
+    background-color: #007bff;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  #action-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .hidden {
+    display: none;
+  }
+      /* Estilos adicionais para a barra de pesquisa */
+      .search-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        top: 0;
+        transform: translate(-50px);
+      }
+      .search-txt {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 300px;
+      }
+      .search-bar {
+        position: absolute;
+        top: 0;
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translateX(-50%);
+        margin-top: 20px;
+      }
+      
+      /* Estilos adicionais para o formulário */
+      #cadastroEquipamentoForm {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: none;
+      }
+      #cadastroEquipamentoForm label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      #cadastroEquipamentoForm input[type="text"],
+      #cadastroEquipamentoForm input[type="number"],
+      #cadastroEquipamentoForm select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      #cadastroEquipamentoForm button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #cadastroEquipamentoForm button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      #cadastrarNovoBtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+      #cadastrarNovoBtn:hover {
+        background-color: #45a049;
+      }
